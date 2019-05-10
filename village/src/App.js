@@ -18,6 +18,15 @@ class App extends Component {
       .then(res => this.setState( {friends: res.data}))
       .catch(err => console.log(err));
   }
+
+  addFriend = friend => {
+    axios
+      .post('http://localhost:3333/smurfs', friend)
+      .then(res => {
+        this.setState({friends:res.data})
+      })
+      .catch(err => console.log(err))
+  }
   
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
   // Notice what your map function is looping over and returning inside of Smurfs.
