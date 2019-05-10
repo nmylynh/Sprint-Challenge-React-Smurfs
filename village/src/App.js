@@ -39,8 +39,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm addFriend=/>
-        <Smurfs smurfs={this.state.smurfs} />
+        <SmurfForm addSmurf={this.addSmurf} />
+        <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf}  />
       </div>
     );
   }
