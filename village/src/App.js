@@ -15,21 +15,22 @@ class App extends Component {
   componentDidMount() {
     axios
       .get('http://localhost:3333/smurfs')
-      .then(res => this.setState( {friends: res.data}))
-      .catch(err => console.log(err));
+      .then( res => this.setState({friends: res.data}) )
+      .catch( err => console.log(err) );
   }
 
   addFriend = friend => {
     axios
       .post('http://localhost:3333/smurfs', friend)
-      .then(res => {
-        this.setState({friends:res.data})
-      })
-      .catch(err => console.log(err))
+      .then( res => this.setState({friends: res.data}) )
+      .catch( err => console.log(err) )
   }
 
   deleteFriend = id => {
-    axios.delete
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then( res => this.setState({friends: res.data}) )
+      .catch( err => console.log(err) )
   }
 
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
