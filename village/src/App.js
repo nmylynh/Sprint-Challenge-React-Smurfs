@@ -3,9 +3,7 @@ import axios from 'axios';
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
-import { Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Routes from "./Routes";
+import {Route, Link, NavLink} from 'react-router-dom';
 
 
 class App extends Component {
@@ -43,16 +41,20 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Smurf Village</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-        </Navbar>
-        <SmurfForm addSmurf={this.addSmurf} />
-        <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf}  />
+      <ul>
+        <NavLink  exact to ='/'><li>Smurf Village</li></NavLink>
+        <NavLink  to ='/smurf-form'><li>Add Smurf</li></NavLink>
+      </ul>
+
+      <Route exact path="/" 
+      render={props => <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf} />} 
+      />
+      <Route path="/smurf-form" 
+      render={props => <SmurfForm addSmurf={this.addSmurf} />}        
+      />
+
+        {/* <SmurfForm addSmurf={this.addSmurf} />
+        <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf}  /> */}
       </div>
     );
   }
