@@ -1,4 +1,5 @@
 import React from 'react';
+import SmurfUpdate from  './SmurfUpdate'
 
 const Smurf = props => {
   return (
@@ -7,6 +8,7 @@ const Smurf = props => {
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
       <button onClick={() => props.deleteSmurf(props.id)}>Delete</button>
+      <SmurfUpdate id={props.id} updateSmurf={props.updateSmurf} />
     </div>
   );
 };
