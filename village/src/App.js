@@ -5,6 +5,8 @@ import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Routes from "./Routes";
+
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +42,15 @@ class App extends Component {
   // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
     return (
-      <div className="App">
+      <div className="App container">
+        <Navbar fluid collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to="/">Smurf Village</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+        </Navbar>
         <SmurfForm addSmurf={this.addSmurf} />
         <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf}  />
       </div>
