@@ -15,21 +15,21 @@ class App extends Component {
   componentDidMount() {
     axios
       .get('http://localhost:3333/smurfs')
-      .then( res => this.setState({friends: res.data}) )
+      .then( res => this.setState({smurfs: res.data}) )
       .catch( err => console.log(err) );
   }
 
-  addFriend = friend => {
+  addSmurf = smurf => {
     axios
-      .post('http://localhost:3333/smurfs', friend)
-      .then( res => this.setState({friends: res.data}) )
+      .post('http://localhost:3333/smurfs', smurf)
+      .then( res => this.setState({smurfs: res.data}) )
       .catch( err => console.log(err) )
   }
 
-  deleteFriend = id => {
+  deleteSmurf = id => {
     axios
       .delete(`http://localhost:3333/smurfs/${id}`)
-      .then( res => this.setState({friends: res.data}) )
+      .then( res => this.setState({smurfs: res.data}) )
       .catch( err => console.log(err) )
   }
 
@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm />
+        <SmurfForm addFriend=/>
         <Smurfs smurfs={this.state.smurfs} />
       </div>
     );
