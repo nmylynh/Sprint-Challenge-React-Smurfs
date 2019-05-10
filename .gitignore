@@ -1,1 +1,4 @@
 /node_modules
+village/package.json
+village/public/index.html
+village/yarn.lock
